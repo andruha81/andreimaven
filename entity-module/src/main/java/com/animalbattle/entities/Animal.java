@@ -34,7 +34,7 @@ public abstract class Animal implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return  this.name.equals(animal.getName()) &&
+        return this.name.equals(animal.getName()) &&
                 this.typeOfAnimal == animal.getTypeOfAnimal();
     }
 

@@ -31,3 +31,17 @@ m
 =utils-module/src/main/java/com/animalbatlle/utils/Combat.java,0\7\072b19d1d1886721ef27b1c6c919bc728a6bc56e
 D
 utils-module/pom.xml,5\8\587427f268a164758292a4747ff774ca018bde65
+t
+Dutils-module/src/main/java/com/animalbatlle/utils/CreateFighter.java,d\7\d739171ba144d44582199ca95d2eefc4ec1fa1ad
+r
+Butils-module/src/main/java/com/animalbatlle/utils/InputOutput.java,e\e\eead9327e2f4a9e7730b83fd89d767c1e1ac5340
+s
+Cservices-module/src/main/java/com/battle/services/Championship.java,7\8\787877dcc5e668c7984cbce669325e44dc15401d
+v
+Fservices-module/src/main/java/com/battle/services/FightersService.java,e\9\e9f304979d7f199b3caf3c208b5ae9a91e86755b
+G
+services-module/pom.xml,1\6\16d73aab1c7f361ebae3afc51fe4df8dbfa3a69f
+i
+9main-module/src/main/java/com/animalbattle/main/Main.java,5\1\512176ccce78107a52d6dc9a3b4e04c21e436f64
+C
+main-module/pom.xml,9\a\9adf5dead9397654485578911a194e66d4c9540a

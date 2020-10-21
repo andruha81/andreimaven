@@ -48,7 +48,7 @@ public class InputOutput {
         }
     }
 
-    public static Animal deserialiseFighter() throws IOException, ClassNotFoundException {
+    public static Animal deserializeFighter() throws IOException, ClassNotFoundException {
 
         try (FileInputStream fileInputStream = new FileInputStream("animal.obj");
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {

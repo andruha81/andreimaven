@@ -99,7 +99,7 @@ public class Championship implements IChampionship {
     }
 
     @Override
-    public void SaveResultsToFile() {
+    public void saveResultsToFile() {
 
         try {
 

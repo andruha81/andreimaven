@@ -114,7 +114,7 @@ public class Combat {
 
         try {
 
-            defender = InputOutput.deserialiseFighter();
+            defender = InputOutput.deserializeFighter();
 
             System.out.printf("Fighter %s was deserialized %n", defender.getFullName());
 

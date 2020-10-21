@@ -10,5 +10,5 @@ public interface IChampionship {
 
     void printResults();
 
-    void SaveResultsToFile();
+    void saveResultsToFile();
 }
