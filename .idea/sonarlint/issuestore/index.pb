@@ -27,8 +27,6 @@ B
 dao-module/pom.xml,8\8\88c034da6c10660d694d150d93bad775b26e161b
 B
 api-module/pom.xml,c\1\c11ac279a4c57cb26631847ccdf497f2e408afcf
-m
-=utils-module/src/main/java/com/animalbatlle/utils/Combat.java,0\7\072b19d1d1886721ef27b1c6c919bc728a6bc56e
 D
 utils-module/pom.xml,5\8\587427f268a164758292a4747ff774ca018bde65
 t
@@ -45,3 +43,7 @@ i
 9main-module/src/main/java/com/animalbattle/main/Main.java,5\1\512176ccce78107a52d6dc9a3b4e04c21e436f64
 C
 main-module/pom.xml,9\a\9adf5dead9397654485578911a194e66d4c9540a
+m
+=services-module/src/main/java/com/battle/services/Combat.java,0\b\0ba111ac09a43f51f229283c16b993534b8e1fef
+s
+Capi-module/src/main/java/com/animalbattle/api/services/ICombat.java,c\e\ce01730923a3ff28d44c7c4f8755c08f6e01fa89
