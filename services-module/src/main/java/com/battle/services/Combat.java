@@ -1,19 +1,18 @@
-package com.animalbatlle.utils;
+package com.battle.services;
 
+import com.animalbatlle.utils.InputOutput;
+import com.animalbattle.api.services.ICombat;
 import com.animalbattle.entities.Animal;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.io.IOException;
 
-public class Combat {
+public class Combat implements ICombat {
 
-    private static Animal attacker;
-    private static Animal defender;
+    private Animal attacker;
+    private Animal defender;
 
-    private Combat() {
-    }
-
-    public static Animal startCombat(Animal firstFighter, Animal secondFighter) {
+    public Animal startCombat(Animal firstFighter, Animal secondFighter) {
 
         attacker = firstFighter;
         defender = secondFighter;
@@ -24,7 +23,6 @@ public class Combat {
         while (winner == null) {
 
             round++;
-
             chooseWhoAttack(round);
 
             System.out.printf("Round %s%n", round);
@@ -47,17 +45,13 @@ public class Combat {
                 }
             }
         }
-
         System.out.printf("The winner of the combat is %s%n", winner.getFullName());
-
         firstFighter.setHealthDefault();
         secondFighter.setHealthDefault();
-
         return winner.equals(firstFighter) ? firstFighter : secondFighter;
     }
 
-    private static void chooseWhoAttack(int round) {
-
+    private void chooseWhoAttack(int round) {
         Animal changeFighter;
 
         if (round == 1) {
@@ -66,10 +60,8 @@ public class Combat {
                 attacker = defender;
                 defender = changeFighter;
             }
-
         } else if (checkLuckyChance()) {
             System.out.printf("Another chance to attack for %s%n", attacker.getFullName());
-
         } else {
             changeFighter = attacker;
             attacker = defender;
@@ -77,53 +69,37 @@ public class Combat {
         }
     }
 
-    private static boolean checkLuckyChance() {
+    private boolean checkLuckyChance() {
         return (RandomUtils.nextInt(1, 5) == 3);
     }
 
-    private static int attack() {
-
+    private int attack() {
         int damage = (attacker.getForce() - defender.getAgility());
-
         damage = Math.max(damage, 1);
-
         System.out.printf("%s is damaged by %s%n", defender.getFullName(), damage);
-
         return damage;
     }
 
-    private static Animal serializeFighter(Animal fighter) {
+    private Animal serializeFighter(Animal fighter) {
 
         try {
-
             InputOutput.serialiseFighter(fighter);
-
             System.out.printf("Fighter %s was serialised %n", fighter.getFullName());
-
             return fighter;
-
         } catch (IOException e) {
-
             System.out.printf("Fighter %s serialisation unsuccessfully %n", fighter.getFullName());
-
             return null;
         }
     }
 
-    private static boolean deserializeFighter() {
+    private boolean deserializeFighter() {
 
         try {
-
-            defender = InputOutput.deserialiseFighter();
-
+            defender = InputOutput.deserializeFighter();
             System.out.printf("Fighter %s was deserialized %n", defender.getFullName());
-
             return true;
-
         } catch (IOException | ClassNotFoundException exception) {
-
             System.out.printf("Fighter %s deserialization unsuccessfully %n", defender.getFullName());
-
             return false;
         }
     }

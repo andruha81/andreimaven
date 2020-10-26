@@ -17,7 +17,6 @@ public abstract class Animal implements Serializable {
     protected int health = DEFAULT_HEALTH;
 
     public Animal(String name, int force, int agility) {
-
         this.name = name;
         this.force = force;
         this.agility = agility;
@@ -34,7 +33,7 @@ public abstract class Animal implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return  this.name.equals(animal.getName()) &&
+        return this.name.equals(animal.getName()) &&
                 this.typeOfAnimal == animal.getTypeOfAnimal();
     }
 

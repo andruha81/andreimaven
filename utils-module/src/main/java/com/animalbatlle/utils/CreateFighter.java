@@ -5,6 +5,7 @@ import com.animalbattle.entities.Cat;
 import com.animalbattle.entities.Dog;
 import com.animalbattle.entities.Monkey;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class CreateFighter {
 
@@ -25,9 +26,8 @@ public class CreateFighter {
         String[] arrayParameters = animalParameters.split(";");
 
         for (String parameter : arrayParameters) {
-
-            String parameterName = parameter.substring(0, parameter.indexOf(":")).trim();
-            String parameterValue = parameter.substring(parameter.indexOf(":") + 1).trim();
+            String parameterName = StringUtils.substringBefore(parameter, ":").trim();
+            String parameterValue = StringUtils.substringAfter(parameter, ":").trim();
 
             switch (parameterName) {
                 case ("id_type"):
@@ -48,20 +48,16 @@ public class CreateFighter {
                     break;
             }
         }
-
         if (type == null) {
             type = DEFAULT_TYPE;
         }
-
         if (name == null) {
             name = "NoName fighter " + numberOfFighterWithNoName;
             numberOfFighterWithNoName++;
         }
-
         if (force == 0) {
             force = RandomUtils.nextInt(1, 10);
         }
-
         if (agility == 0) {
             agility = RandomUtils.nextInt(1, 10);
         }
@@ -79,9 +75,7 @@ public class CreateFighter {
             default:
                 createdFighter = new Cat(name, force, agility);
         }
-
         System.out.printf("New fighter: %s%n", createdFighter);
-
         return createdFighter;
     }
 }

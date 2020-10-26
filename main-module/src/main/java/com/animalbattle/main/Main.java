@@ -21,7 +21,7 @@ public class Main {
 
             } while (!championship.checkWinner());
 
-            championship.SaveResultsToFile();
+            championship.saveResultsToFile();
 
         } else {
 

@@ -1,9 +1,9 @@
 package com.battle.services;
 
-import com.animalbatlle.utils.Combat;
 import com.animalbatlle.utils.InputOutput;
 import com.animalbattle.api.exceptions.NullParticipantsException;
 import com.animalbattle.api.services.IChampionship;
+import com.animalbattle.api.services.ICombat;
 import com.animalbattle.api.services.IFightersService;
 import com.animalbattle.entities.Animal;
 
@@ -16,6 +16,7 @@ public class Championship implements IChampionship {
 
     private int numberOfCombats;
     private final IFightersService fightersService = new FightersService();
+    private final ICombat combat = new Combat();
     private Map<Animal, Integer> championshipTable = null;
     private List<Animal> fightersReady;
 
@@ -25,19 +26,14 @@ public class Championship implements IChampionship {
         boolean isChampionshipStarted;
 
         try {
-
             fightersService.addFighters();
-
             isChampionshipStarted = true;
-
             championshipTable = fightersService.getFighters().stream().collect(Collectors.toMap(Function.identity(), x -> 0));
-
             fightersReady = new ArrayList<>(fightersService.getFighters());
 
         } catch (IOException | NullParticipantsException exception) {
             isChampionshipStarted = false;
         }
-
         return isChampionshipStarted;
     }
 
@@ -46,13 +42,9 @@ public class Championship implements IChampionship {
 
         for (int i = 0; i < fightersReady.size() - 1; i++) {
             for (int j = i + 1; j < fightersReady.size(); j++) {
-
                 numberOfCombats++;
-
                 System.out.printf("COMBAT %d%n", numberOfCombats);
-
-                Animal winner = Combat.startCombat(fightersReady.get(i), fightersReady.get(j));
-
+                Animal winner = combat.startCombat(fightersReady.get(i), fightersReady.get(j));
                 championshipTable.put(winner, championshipTable.get(winner) + 1);
             }
         }
@@ -70,19 +62,12 @@ public class Championship implements IChampionship {
                 .collect(Collectors.toList());
 
         if (fightersReady.size() == 1) {
-
             System.out.printf("The winner of the championship is %s%n", fightersReady.get(0).getFullName());
-
             return true;
-
         } else if (maxNumberOfVictories == 0) {
-
             System.out.println("The championship was cancelled");
-
             return true;
-
         } else {
-
             return false;
         }
     }
@@ -99,14 +84,11 @@ public class Championship implements IChampionship {
     }
 
     @Override
-    public void SaveResultsToFile() {
+    public void saveResultsToFile() {
 
         try {
-
             String path = InputOutput.writeResultsToFile(championshipTable);
-
             System.out.printf("Results are saved to file %s%n", path);
-
         } catch (IOException e) {
             System.out.println("Couldn't save results of the championship");
         }
