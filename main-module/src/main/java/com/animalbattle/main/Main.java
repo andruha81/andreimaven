@@ -14,17 +14,13 @@ public class Main {
             System.out.println("Championship started");
 
             do {
-
                 championship.startCombats();
-
                 championship.printResults();
-
             } while (!championship.checkWinner());
 
             championship.saveResultsToFile();
 
         } else {
-
             System.out.println("None fighters were found. Championship didn't start");
         }
     }
