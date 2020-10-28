@@ -8,6 +8,7 @@ import com.animalbattle.api.services.IFightersService;
 import com.animalbattle.entities.Animal;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -31,7 +32,7 @@ public class Championship implements IChampionship {
             championshipTable = fightersService.getFighters().stream().collect(Collectors.toMap(Function.identity(), x -> 0));
             fightersReady = new ArrayList<>(fightersService.getFighters());
 
-        } catch (IOException | NullParticipantsException exception) {
+        } catch (SQLException | NullParticipantsException exception) {
             isChampionshipStarted = false;
         }
         return isChampionshipStarted;
