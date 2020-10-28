@@ -1,5 +1,0 @@
-com\animalbattle\api\exceptions\NullParticipantsException.class
-com\animalbattle\api\dao\IFightersDao.class
-com\animalbattle\api\services\ICombat.class
-com\animalbattle\api\services\IFightersService.class
-com\animalbattle\api\services\IChampionship.class
