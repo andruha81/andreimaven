@@ -1,11 +1,12 @@
 package com.battle.services;
 
-import com.animalbatlle.utils.InputOutput;
+import com.animalbatlle.utils.SqlConnection;
 import com.animalbattle.api.services.ICombat;
 import com.animalbattle.entities.Animal;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Combat implements ICombat {
 
@@ -81,24 +82,22 @@ public class Combat implements ICombat {
     }
 
     private Animal serializeFighter(Animal fighter) {
-
         try {
-            InputOutput.serialiseFighter(fighter);
+            SqlConnection.serialiseFighter(fighter);
             System.out.printf("Fighter %s was serialised %n", fighter.getFullName());
             return fighter;
-        } catch (IOException e) {
+        } catch (SQLException e) {
             System.out.printf("Fighter %s serialisation unsuccessfully %n", fighter.getFullName());
             return null;
         }
     }
 
     private boolean deserializeFighter() {
-
         try {
-            defender = InputOutput.deserializeFighter();
+            defender = (Animal) SqlConnection.deserializeFighter();
             System.out.printf("Fighter %s was deserialized %n", defender.getFullName());
             return true;
-        } catch (IOException | ClassNotFoundException exception) {
+        } catch (SQLException | IOException | ClassNotFoundException exception) {
             System.out.printf("Fighter %s deserialization unsuccessfully %n", defender.getFullName());
             return false;
         }

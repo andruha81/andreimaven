@@ -27,6 +27,7 @@
                 <configuration>
                     <mainClass>${mainClass}</mainClass>
                     <skip>false</skip>
+                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
         </plugins>

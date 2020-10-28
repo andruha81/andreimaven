@@ -12,6 +12,7 @@
         <commonsLangVersion>3.11</commonsLangVersion>
         <execVersion>3.0.0</execVersion>
         <mySqlConectorVersion>8.0.21</mySqlConectorVersion>
+        <mavenCompilerVersion>3.8.1</mavenCompilerVersion>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -46,7 +47,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${mavenCompilerVersion}</version>
                 <configuration>
                     <source>14</source>
                     <target>14</target>

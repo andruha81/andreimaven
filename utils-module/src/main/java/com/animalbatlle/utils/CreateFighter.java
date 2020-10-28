@@ -14,7 +14,7 @@ public class CreateFighter {
     private CreateFighter() {
     }
 
-    public static Animal createFighter(String type, String name, int force, int agility) {
+    public static Animal createFighter(int id, String type, String name, int force, int agility) {
 
         Animal createdFighter;
 
@@ -34,16 +34,16 @@ public class CreateFighter {
 
         switch (type) {
             case ("Cat"):
-                createdFighter = new Cat(name, force, agility);
+                createdFighter = new Cat(id, name, force, agility);
                 break;
             case ("Dog"):
-                createdFighter = new Dog(name, force, agility);
+                createdFighter = new Dog(id, name, force, agility);
                 break;
             case ("Monkey"):
-                createdFighter = new Monkey(name, force, agility);
+                createdFighter = new Monkey(id, name, force, agility);
                 break;
             default:
-                createdFighter = new Cat(name, force, agility);
+                createdFighter = new Cat(id, name, force, agility);
         }
         System.out.printf("New fighter: %s%n", createdFighter);
         return createdFighter;

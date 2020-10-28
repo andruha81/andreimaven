@@ -1,15 +1,17 @@
 package com.battle.services;
 
-import com.animalbatlle.utils.InputOutput;
 import com.animalbattle.api.exceptions.NullParticipantsException;
 import com.animalbattle.api.services.IChampionship;
 import com.animalbattle.api.services.ICombat;
 import com.animalbattle.api.services.IFightersService;
 import com.animalbattle.entities.Animal;
 
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -86,12 +88,6 @@ public class Championship implements IChampionship {
 
     @Override
     public void saveResultsToFile() {
-
-        try {
-            String path = InputOutput.writeResultsToFile(championshipTable);
-            System.out.printf("Results are saved to file %s%n", path);
-        } catch (IOException e) {
-            System.out.println("Couldn't save results of the championship");
-        }
+        fightersService.saveResults(championshipTable);
     }
 }

@@ -10,13 +10,15 @@ public abstract class Animal implements Serializable {
 
     private static final long serialVersionUID = 6613826656822751310L;
     protected static final int DEFAULT_HEALTH = 10;
+    protected int id;
     protected String name;
     protected TypeOfAnimals typeOfAnimal;
     protected int force;
     protected int agility;
     protected int health = DEFAULT_HEALTH;
 
-    public Animal(String name, int force, int agility) {
+    public Animal(int id, String name, int force, int agility) {
+        this.id = id;
         this.name = name;
         this.force = force;
         this.agility = agility;
